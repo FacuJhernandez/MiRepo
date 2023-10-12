@@ -9,7 +9,7 @@ public class Carrito {
 	private Producto producto2;
 	private Producto producto3;
 
-	
+	private Descuento descuento;
 	
 	
 	
@@ -17,12 +17,19 @@ public class Carrito {
 		this.producto1=p1;
 		this.producto2=p2;
 		this.producto3=p3;
+	
 	}
 
 	public float costoFinal() {
-		return this.producto1.costoFinal() + this.producto2.costoFinal() + this.producto3.costoFinal();
+		float costoFinal= this.producto1.costoFinal() + this.producto2.costoFinal() + this.producto3.costoFinal();
+		
+		return descuento.ValorFinal(costoFinal);
 		
 	}
 
+
+	public void setDescuento(Descuento d) {
+		this.descuento=d;
+	}
 
 }
