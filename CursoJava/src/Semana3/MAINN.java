@@ -3,6 +3,7 @@ package Semana3;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MAINN {
@@ -14,7 +15,7 @@ public class MAINN {
 		
 		
 		// este alooritmo se hizo asumiendo que los productos en el archivo estan en el siguente formato
-		// 40,nombre,codigo, y que son solo 3 productos 
+		// 40,nombre,codigo, 
 		
 		String archivo= "archivos\\Productos.txt";
 		List<String> productos = null;
@@ -22,10 +23,12 @@ public class MAINN {
 		String valorProducto="";
 		String nombreProducto="";
 		int contador=0;
-		int productoCreados=0;
-		Producto p1 = null;
-		Producto p2 = null;
-		Producto p3 = null;
+		
+		
+		Carrito carrito= new Carrito();
+		DescuentoFijo descuento= new DescuentoFijo((float) 10);
+		carrito.setDescuento(descuento);
+		
 		try {
 			productos= Files.readAllLines(Paths.get(archivo));
 		} catch (IOException e) {
@@ -54,21 +57,10 @@ public class MAINN {
 					codigoProducto= codigoProducto + linea.charAt(j);
 				}	
 				if(contador==3) {
-					if(productoCreados==0) {
-					 	System.out.println(valorProducto);
-					 	p1= new Producto(nombreProducto,codigoProducto,Float.parseFloat(valorProducto));	
-					 }
-					if(productoCreados==1) {
-						System.out.println(valorProducto);
-					 	p2= new Producto(nombreProducto,codigoProducto,Float.parseFloat(valorProducto));				
-					 }				
-					if (productoCreados==2) {
-					 	System.out.println(valorProducto);
-					 	p3= new Producto(nombreProducto,codigoProducto,Float.parseFloat(valorProducto));
-					 }
 					
-					contador=0;
-					productoCreados++;
+					Producto p = new Producto(nombreProducto,codigoProducto,Float.parseFloat(valorProducto));
+					carrito.añadirProducto(p);
+					 contador=0;
 				}
 					
 			}
@@ -79,15 +71,15 @@ public class MAINN {
 		
 		}
 	
-		System.out.println(p1.costoFinal() + " " +p2.costoFinal() + " " +p3.costoFinal());
+		;
 		
-		Carrito carrito= new Carrito(p1,p2,p3);
+	
+		
 		
 		System.out.println(carrito.costoFinal());
 		
 	}
 
-	
 	
 	
 	

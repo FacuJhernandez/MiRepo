@@ -7,9 +7,6 @@ public abstract class Descuento {
 	
 		
 		
-		
-		
-		
 	public float getValorDesc() {
 		return this.valor;
 		

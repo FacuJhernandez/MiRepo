@@ -15,8 +15,11 @@ class CarritoDescuentoTest {
 		Producto p2= new Producto("Galletita","1111",30);
 		Producto p3= new Producto("Gomitas","2222",20);
 		
-		return new Carrito(p1,p2,p3);
-		
+		Carrito c = new Carrito();
+		c.añadirProducto(p1);
+		c.añadirProducto(p2);
+		c.añadirProducto(p3);
+		return c;
 	}
 
 	
