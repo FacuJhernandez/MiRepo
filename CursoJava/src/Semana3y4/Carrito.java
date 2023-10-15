@@ -1,4 +1,4 @@
-package Semana3;
+package Semana3y4;
 
 import java.util.ArrayList;
 
@@ -16,14 +16,29 @@ public class Carrito {
 	
 	}
 
-	public float costoFinal() {
+	public float costoFinal() throws CarritoPrecio0Exception {
 		float costoFinal=0;
 		for(int i =0; i<this.productos.size();i++) {
 			costoFinal= costoFinal + productos.get(i).costoFinal();
 		}
 		
+		if(costoFinal==0) {
+			throw new CarritoPrecio0Exception(this);
+		}
+		else {
 		
-		return descuento.ValorFinal(costoFinal);
+				
+				try {
+					costoFinal= descuento.ValorFinal(costoFinal);
+				} catch (AlAplicarDescuentoValorNegativo e) {
+					System.out.println("no se puede aplica el descuento por que queda negativo");
+					return -1;
+				}
+				
+				
+
+		}
+		return costoFinal;
 		
 	}
 

@@ -1,6 +1,6 @@
-package Semana3;
+package Semana3y4;
 
-public abstract class Descuento {
+public abstract class Descuento  {
 
 	
 	private float valor;
@@ -17,8 +17,5 @@ public abstract class Descuento {
 		
 	}
 	
-	public abstract float ValorFinal (float valorInicial);
-		
-	
-	
+	public abstract float ValorFinal (float valorInicial) throws AlAplicarDescuentoValorNegativo;
 }

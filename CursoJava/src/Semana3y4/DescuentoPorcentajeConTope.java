@@ -1,4 +1,4 @@
-package Semana3;
+package Semana3y4;
 
 public class DescuentoPorcentajeConTope extends descuentoPorcentaje {
 
@@ -11,7 +11,7 @@ public class DescuentoPorcentajeConTope extends descuentoPorcentaje {
 			this.tope=tope;
 		}
 		
-		public float ValorFinal(float valorInicial) {
+		public float ValorFinal(float valorInicial) throws AlAplicarDescuentoValorNegativo {
 		
 			float porcentaje= valorInicial* this.getValorDesc();
 			porcentaje= porcentaje/100;

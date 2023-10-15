@@ -1,4 +1,4 @@
-package Semana3;
+package Semana3y4;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -30,7 +30,11 @@ class CarritoDescuentoTest {
 		DescuentoFijo d = new DescuentoFijo((float) 10);
 		c.setDescuento(d);
 		
-		assertEquals(c.costoFinal(),90);
+		try {
+			assertEquals(c.costoFinal(),90);
+		} catch (CarritoPrecio0Exception e) { 
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -40,7 +44,11 @@ class CarritoDescuentoTest {
 		DescuentoFijo d = new DescuentoFijo((float) (25-10));
 		c.setDescuento(d);
 		
-		assertEquals(c.costoFinal(),85);
+		try {
+			assertEquals(c.costoFinal(),85);
+		} catch (CarritoPrecio0Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -55,7 +63,11 @@ class CarritoDescuentoTest {
 		
 		c.setDescuento(d);
 		
-		assertEquals(c.costoFinal(),90);
+		try {
+			assertEquals(c.costoFinal(),90);
+		} catch (CarritoPrecio0Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -66,7 +78,11 @@ class CarritoDescuentoTest {
 		
 		c.setDescuento(d);
 		
-		assertEquals(c.costoFinal(),75);
+		try {
+			assertEquals(c.costoFinal(),75);
+		} catch (CarritoPrecio0Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 	@Test
@@ -76,7 +92,11 @@ class CarritoDescuentoTest {
 		
 		c.setDescuento(d);
 		
-		assertEquals(c.costoFinal(),80);
+		try {
+			assertEquals(c.costoFinal(),80);
+		} catch (CarritoPrecio0Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -87,10 +107,44 @@ class CarritoDescuentoTest {
 		
 		c.setDescuento(d);
 		
-		assertEquals(c.costoFinal(),90);
+		try {
+			assertEquals(c.costoFinal(),90);
+		} catch (CarritoPrecio0Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
+	@Test
+	void pruebaExceptionDeCarrito() {
+		Carrito c= new Carrito();
+		Producto p = new Producto("lapiz","1234",0);
+		c.añadirProducto(p);
+		
+		try {
+			System.out.println(c.costoFinal());
+		} catch (CarritoPrecio0Exception e) {
+			System.out.println("El precio del carrito no puede ser 0");
+			
+		}
+		
+		
+	}	
 	
+	@Test
+	void pruebaExceptionDeDescuento() {
+		Carrito c =InicializarCarrito();
+		DescuentoFijo d = new DescuentoFijo((float) (120));
+		c.setDescuento(d);
+		
+		try {
+				System.out.println(c.costoFinal());
+		} catch (CarritoPrecio0Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
 	
 }

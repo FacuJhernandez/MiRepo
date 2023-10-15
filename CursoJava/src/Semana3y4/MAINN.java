@@ -1,4 +1,4 @@
-package Semana3;
+package Semana3y4;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -76,7 +76,11 @@ public class MAINN {
 	
 		
 		
-		System.out.println(carrito.costoFinal());
+		try {
+			System.out.println(carrito.costoFinal());
+		} catch (CarritoPrecio0Exception e) {
+			System.out.println("El precio del carrito no puede ser 0");
+		}
 		
 	}
 
